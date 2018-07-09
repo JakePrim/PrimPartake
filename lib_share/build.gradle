@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // implementation 引用的libs中的jar包，外部app是访问不到的
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api files('libs/umeng-common-1.5.3.jar')
+//    api files('libs/umeng-debug-1.0.0.jar')
+    api files('libs/umeng-shareboard-widget-6.9.2.jar')
+    api files('libs/umeng-share-core-6.9.2.jar')
+    api files('libs/umeng-share-QQ-simplify-6.9.2.jar')
+    api files('libs/umeng-share-sina-simplify-6.9.2.jar')
+    api files('libs/umeng-sharetool-6.9.2.jar')
+    api files('libs/umeng-share-wechat-simplify-6.9.2.jar')
+}
